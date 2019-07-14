@@ -18,6 +18,9 @@
 #'
 get_base_url <- function(location, area, type = "apa")
 {
+  ##Check if location is newyork if so set type to aap as newyork uses aap while craiglist uses apa elsewhere
+  type <-ifelse(location == 'newyork', 'aap', type)
+
   ## Generate the base url
   if(area == "all"){
     return(paste0("https://", location, ".craigslist.org/search/", type))
